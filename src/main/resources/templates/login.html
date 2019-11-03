@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/loginCss.css}" type="text/css"/>
+</head>
+<body th:background="@{/images/background.jpg}">
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:inline="javascript">
+    //<![CDATA[
+    layui.use('layer',function () {
+        var layer=layui.layer;
+        var $=layui.jquery;
+        var wronglogin = [[${session.wronglogin}]];
+        if (wronglogin!=null&&wronglogin==true){
+            layer.msg('用户名或密码错误,请重新输入!');
+        }
+    })
+    //]]>
+</script>
+<center>
+    <div class="dowebok">
+        <form name="loginform" action="login" method="post">
+            <div class="logo"></div>
+            <div class="form-item">
+                <input id="username" name="username" type="text" autocomplete="off" placeholder="邮箱或手机号"/>
+            </div>
+            <div class="form-item">
+                <input id="password" name="password" type="password" autocomplete="off" placeholder="登录密码"/>
+            </div>
+            <div class="form-item">
+                <button type="submit" >登 录</button>
+            </div>
+        </form>
+    </div>
+</center>
+</body>
+</html>

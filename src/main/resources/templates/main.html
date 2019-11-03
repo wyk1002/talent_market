@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>人才市场管理系统</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body class="layui-layout-body">
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/tabControll.js}"></script>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">人才市场管理系统</div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img th:src="@{/images/myhead.jpeg}" class="layui-nav-img"/>
+                    Admin
+                </a>
+            </li>
+            <li class="layui-nav-item"><a th:href="@{/}">退出</a></li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed ">
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-id="1" data-title="招聘区域管理" data-url="AllRecruit_area"
+                                class="site-demo-active" data-type="tabAdd">招聘区域管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="2" data-title="招聘位管理" data-url="AllRecruit_seat"
+                               class="site-demo-active" data-type="tabAdd">招聘位管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="3" data-title="招聘会管理" data-url="AllRecruit_fair"
+                               class="site-demo-active" data-type="tabAdd">招聘会管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="4" data-title="内部职工管理" data-url="AllStaff"
+                               class="site-demo-active" data-type="tabAdd">内部职工管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="5" data-title="招聘卡管理" data-url="AllRecruit_card"
+                               class="site-demo-active" data-type="tabAdd">招聘卡管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="6" data-title="企业管理" data-url="AllFirm"
+                               class="site-demo-active" data-type="tabAdd">企业管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="7" data-title="广告位管理" data-url="AllAdvertising_seat"
+                               class="site-demo-active" data-type="tabAdd">广告位管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="8" data-title="求职人员管理" data-url="AllJob_seeker"
+                               class="site-demo-active" data-type="tabAdd">求职人员管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="9" data-title="发票管理" data-url="AllInvoice"
+                               class="site-demo-active" data-type="tabAdd">发票管理
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-id="10" data-title="企业-招聘会管理" data-url="AllParticipate_firm"
+                               class="site-demo-active" data-type="tabAdd">企业-招聘会管理
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-tab" lay-filter="demo" lay-allowclose="true" style="margin-left: 200px;">
+        <ul class="layui-tab-title"></ul>
+        <div class="layui-tab-content"></div>
+    </div>
+
+    <div class="layui-footer" align="center">
+        柯婷人才市场管理系统
+    </div>
+</div>
+</body>
+</html>

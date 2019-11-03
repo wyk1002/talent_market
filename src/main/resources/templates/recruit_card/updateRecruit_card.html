@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>AddRecruit_area</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/recruit_card/updateRecruit_card.js}"></script>
+<script th:inline="javascript">
+    //<![CDATA[
+    var firms = [[${session.firms}]];
+    var seekers = [[${session.seekers}]];
+    layui.use('form', function () {
+        var form = layui.form;
+        var $ = layui.$;
+        form.on('select(category)', function (data) {
+            $("#object_id").empty();
+            if (data.value == "企业") {
+                for (var i = 0; i < firms.length; i++) {
+                    $("#object_id").append(new Option(firms[i].name,firms[i].id))
+                }
+            }
+            else if(data.value == "个人"){
+                for (var j = 0; j < seekers.length; j++) {
+                    $("#object_id").append(new Option(seekers[j].name,seekers[j].id))
+                }
+            }
+            form.render('select');
+        })
+    })
+    //]]>
+</script>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">持卡人类别：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <input type="hidden" id="id" name="id" />
+            <select name="object_category" id="object_category" lay-verify="required" lay-filter="category" >
+                <option value="企业">企业</option>
+                <option value="个人">个人</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">持卡人：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <select name="object_id" id="object_id" lay-verify="required">
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">卡内余额：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <input type="text" id="remain_money" class="layui-input" style="width: 200px;display: inline-block" placeholder="请输入卡内余额"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block" align="center">
+            <button class="layui-btn" onclick="updateRecruit_cardButton()" >立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

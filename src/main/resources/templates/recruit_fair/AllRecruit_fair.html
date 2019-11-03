@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>招聘区管理</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/recruit_fair/recruit_fairData.js}"></script>
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+</script>
+<form class="layui-form" name="searchform">
+    <div class="layui-form-item" align="center">
+        <label class="layui-form-label" style="width: 90px;">招聘会id：</label>
+        <div class="layui-input-block" style="display: block;float: left">
+            <input type="text" id="searchid"  placeholder="请输入招聘会id（默认查询所有）"
+                   autocomplete="off" class="layui-input" style="width: 500px;display: inline-block ;margin-left: 10px"/>
+            <input type="button" id="search" value="搜索" style="height: 38px;width: 50px;background: darkgreen"/>
+            <!--<button class="layui-btn" id="search">搜索</button>-->
+        </div>
+    </div>
+</form>
+<table id="demo" th:name="demo" lay-filter="test" lay-size="lg"></table>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>AddRecruit_area</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/staff/updateStaff.js}"></script>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">姓名：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <input type="hidden" id="id" name="id" />
+            <input type="text" id="name" name="name" required="required" style="width: 200px;display: inline-block"
+                   placeholder="请输入员工姓名" autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">联系方式：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <input type="text" id="phone" name="phone" required="required" style="width: 200px;display: inline-block"
+                   placeholder="请输入员工联系方式" autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">职位：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <input type="text" id="position" name="position" required="required" style="width: 200px;display: inline-block"
+                   placeholder="请输入员工职位" autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block" align="center">
+            <button class="layui-btn" onclick="updateStaffButton()" >立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

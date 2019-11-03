@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>AddRecruit_area</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/advertising_seat/addAdvertising_seat.js}"></script>
+<script th:inline="javascript">
+    //<![CDATA[
+    var firms = [[${session.firms}]];
+    layui.use('form', function () {
+        var form = layui.form;
+        var $ = layui.$;
+        form.on('select(category)', function (data) {
+            $("#firm_id").empty();
+            if (data.value == "已出租") {
+                for (var i = 0; i < firms.length; i++) {
+                    $("#firm_id").append(new Option(firms[i].name,firms[i].id))
+                }
+            }
+            form.render('select');
+        })
+    })
+    //]]>
+</script>
+<form class="layui-form">
+    <div class="layui-form-item" >
+        <label class="layui-form-label" style="width: 150px">编号：</label>
+        <div class="layui-input-block">
+            <input type="text" id="advertising_seat_num" name="advertising_seat_num" required="required" style="width: 200px;display: inline-block" placeholder="请输入广告位编号" autocomplete="off" class="layui-input" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">广告位状态：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <select name="state"  id="state" lay-verify="required" lay-filter="category">
+                <option value="未出租">未出租</option>
+                <option value="已出租">已出租</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">所属招聘企业：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <select name="firm_id"  id="firm_id" lay-verify="required" >
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item" >
+        <label class="layui-form-label" style="width: 150px">剩余时间（天）：</label>
+        <div class="layui-input-block">
+            <input type="text" id="remain_time" name="remain_time" required="required" style="width: 200px;display: inline-block" placeholder="请输入广告位编号" autocomplete="off" class="layui-input" />
+        </div>
+    </div>
+    <div class="layui-form-item" >
+        <label class="layui-form-label" style="width: 150px">价格（元/天）：</label>
+        <div class="layui-input-block">
+            <input type="text" id="price" name="price" required="required" style="width: 200px;display: inline-block" placeholder="请输入招聘位编号" autocomplete="off" class="layui-input" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block" align="center">
+            <button class="layui-btn" onclick="addAdvertising_seat()" >立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

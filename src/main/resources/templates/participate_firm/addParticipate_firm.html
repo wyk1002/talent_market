@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>AddRecruit_area</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/participate_firm/addParticipate_firm.js}"></script>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">企业ID：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <select name="firm_id"  id="firm_id" lay-verify="required">
+                <option th:each="firm:${session.firms}" th:value="${firm.id}" th:text="${firm.name}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">招聘会ID：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <select name="recruit_fair_id"  id="recruit_fair_id" lay-verify="required">
+                <option th:each="fair:${session.fairs}" th:value="${fair.id}" th:text="${fair.name}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block" align="center">
+            <button class="layui-btn" onclick="addParticipate_firmButton()">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

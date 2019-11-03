@@ -1,0 +1,49 @@
+server:
+  port: 666
+  context-path: /IronMan
+management:
+  security:
+    enabled: false
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html #    URL中默认加.html后缀
+    cache: true #    开启缓存
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/resources/, classpath:/static/
+  redis:
+    database: 0
+    timeout: -1
+    host: 127.0.0.1
+    port: 6379
+    password:
+    pool:
+      max-active: 20
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    # 配置当前要使用的数据源的操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://localhost:3306/talent_market          # 数据库连接地址
+    username: root                                  # 数据库用户名
+    password: 123456                            # 数据库连接密码
+    filters: stat,wall,log4j
+    dbcp2:                                          # 进行数据库连接池的配置
+      min-idle: 5                                   # 数据库连接池的最小维持连接数
+      initial-size: 5                               # 初始化提供的连接数
+      max-total: 5                                  # 最大的连接数
+      max-wait-millis: 200                          # 等待连接获取的最大超时时间
+    hikari:
+      connection-timeout: 60000
+#  jms:
+#    pub-sub-domain: false   # 配置消息的类型，如果是true则表示为topic消息，如果为false表示Queue消息
+  # activemq:
+  #  user: lwl    # 连接用户名
+  #   password: 123456   # 连接密码
+  #  broker-url: tcp://127.0.0.1:61616 # 消息组件的连接主机信息
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: biubiu.Model

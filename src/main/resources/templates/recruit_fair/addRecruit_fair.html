@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>AddRecruit_area</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/recruit_fair/addRecruit_fair.js}"></script>
+<script th:src="@{/layui/laydate/laydate.js}"></script>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#time' //指定元素
+            ,format: 'yyyy年MM月dd日'
+        });
+    });
+</script>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">名称：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <input type="text" id="name" name="name" required="required" style="width: 200px;display: inline-block"
+                   placeholder="请输入招聘会名称" autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 150px">召开时间：</label>
+        <div class="layui-input-block" style="width: 200px;display: inline-block;float: left">
+            <input type="text" id="time" class="layui-input" style="width: 200px;display: inline-block"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block" align="center">
+            <button class="layui-btn" onclick="addRecruit_fairButton()">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
